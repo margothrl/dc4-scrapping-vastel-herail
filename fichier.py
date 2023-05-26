@@ -19,5 +19,10 @@ for i in range(1, 11):
     soup = BeautifulSoup(response.text, "html.parser")
     rows = soup.find_all("tr", class_="team")
 
+    # ÉTAPE 3 :Vérifier si les données respectent les conditions demandées et les écrire dans result.csv
     for row in rows[1:]:
         data = [td.text.strip() for td in row.find_all("td")]
+        goals_against = int(data[7].replace(".", ""))
+        diff = int(data[8].replace(".", ""))
+        if diff > 0 and goals_against < 300:
+            writer.writerow(data)
