@@ -26,3 +26,6 @@ for i in range(1, 11):
         diff = int(data[8].replace(".", ""))
         if diff > 0 and goals_against < 300:
             writer.writerow(data)
+
+# ÉTAPE 4 : Fermer le fichier result.csv une fois que les données sont écrites
+result_file.close()
